@@ -111,6 +111,9 @@ TEMPLATE_HTML = '''
 {grid_html}
 </tbody>
 </table>
+<table>
+{sec_grid_html}
+<table>
 </div>
 <h4>异常数据</h4>
 <table>
@@ -819,12 +822,12 @@ class AnalyseWindow(QtGui.QMainWindow):
         v_ir_l4 = f('ir1', 'ir2', 'ir_ld', 'ir_le', img=self.left_ir_face)
         v_ir_l5 = f('ir1', 'ir2', 'ir_le', 'ir_lf', img=self.left_ir_face)
         v_ir_l6 = f('ir1', 'ir2', 'ir_lf', 'ir_lg', img=self.left_ir_face)
-        self.region.append(37, _region('1a', '2b', '\xe5\xb7\xa6\xe8\x87\x82\xe5\x8c\xba', ''), gv=v_l1, ir_gv=v_ir_l1)
-        self.region.append(38, _region('1b', '2c', '\xe5\xb7\xa6\xe8\x82\x98\xe5\x8c\xba', ''), gv=v_l2, ir_gv=v_ir_l2)
-        self.region.append(39, _region('1c', '2d', '\xe5\xb7\xa6\xe6\x89\x8b\xe5\x8c\xba', ''), gv=v_l3, ir_gv=v_ir_l3)
-        self.region.append(40, _region('1d', '2e', '\xe5\xb7\xa6\xe8\x82\xa1(\xe8\x82\xa1\xe9\xaa\xa8\xe5\x85\xb3\xe8\x8a\x82)\xe5\x8c\xba', ''), gv=v_l4, ir_gv=v_ir_l4)
-        self.region.append(41, _region('1e', '2f', '\xe5\xb7\xa6\xe8\x86\x9d(\xe5\xa4\xa7\xe8\x85\xbf)\xe5\x8c\xba', ''), gv=v_l5, ir_gv=v_ir_l5)
-        self.region.append(42, _region('1f', '2g', '\xe5\xb7\xa6\xe8\x83\xab\xe5\x8c\xba(\xe5\xb0\x8f\xe8\x85\xbf)\xe5\x8c\xba', ''), gv=v_l6, ir_gv=v_ir_l6)
+        self.region.append(37, _region('1a', '2b', '左臂区', ''), gv=v_l1, ir_gv=v_ir_l1)
+        self.region.append(38, _region('1b', '2c', '左肘区', ''), gv=v_l2, ir_gv=v_ir_l2)
+        self.region.append(39, _region('1c', '2d', '左手区', ''), gv=v_l3, ir_gv=v_ir_l3)
+        self.region.append(40, _region('1d', '2e', '左股(股骨关节)区', ''), gv=v_l4, ir_gv=v_ir_l4)
+        self.region.append(41, _region('1e', '2f', '左膝(大腿)区', ''), gv=v_l5, ir_gv=v_ir_l5)
+        self.region.append(42, _region('1f', '2g', '左胫区(小腿)区', ''), gv=v_l6, ir_gv=v_ir_l6)
 
     def get_right_results(self):
         f = self.get_auto_grayvalue
@@ -840,12 +843,12 @@ class AnalyseWindow(QtGui.QMainWindow):
         v_ir_r4 = f('ir3', 'ir4', 'ir_rd', 'ir_re', img=self.right_ir_face)
         v_ir_r5 = f('ir3', 'ir4', 'ir_re', 'ir_rf', img=self.right_ir_face)
         v_ir_r6 = f('ir3', 'ir4', 'ir_rf', 'ir_rg', img=self.right_ir_face)
-        self.region.append(43, _region('3a', '4b', '\xe5\x8f\xb3\xe8\x87\x82\xe5\x8c\xba', ''), gv=v_r1, ir_gv=v_ir_r1)
-        self.region.append(44, _region('3b', '4c', '\xe5\x8f\xb3\xe8\x82\x98\xe5\x8c\xba', ''), gv=v_r2, ir_gv=v_ir_r2)
-        self.region.append(45, _region('3c', '4d', '\xe5\x8f\xb3\xe6\x89\x8b\xe5\x8c\xba', ''), gv=v_r3, ir_gv=v_ir_r3)
-        self.region.append(46, _region('3d', '4e', '\xe5\x8f\xb3\xe8\x82\xa1(\xe8\x82\xa1\xe9\xaa\xa8\xe5\x85\xb3\xe8\x8a\x82)\xe5\x8c\xba', ''), gv=v_r4, ir_gv=v_ir_r4)
-        self.region.append(47, _region('3e', '4f', '\xe5\x8f\xb3\xe8\x86\x9d(\xe5\xa4\xa7\xe8\x85\xbf)\xe5\x8c\xba', ''), gv=v_r5, ir_gv=v_ir_r5)
-        self.region.append(48, _region('3f', '4g', '\xe5\x8f\xb3\xe8\x83\xab\xe5\x8c\xba(\xe5\xb0\x8f\xe8\x85\xbf)\xe5\x8c\xba', ''), gv=v_r6, ir_gv=v_ir_r6)
+        self.region.append(43, _region('3a', '4b', '右臂区', ''), gv=v_r1, ir_gv=v_ir_r1)
+        self.region.append(44, _region('3b', '4c', '右肘区', ''), gv=v_r2, ir_gv=v_ir_r2)
+        self.region.append(45, _region('3c', '4d', '右手区', ''), gv=v_r3, ir_gv=v_ir_r3)
+        self.region.append(46, _region('3d', '4e', '右股(股骨关节)区', ''), gv=v_r4, ir_gv=v_ir_r4)
+        self.region.append(47, _region('3e', '4f', '右膝(大腿)区', ''), gv=v_r5, ir_gv=v_ir_r5)
+        self.region.append(48, _region('3f', '4g', '右胫区(小腿)区', ''), gv=v_r6, ir_gv=v_ir_r6)
 
     def get_auto_results(self):
         f = self.get_auto_grayvalue
@@ -1345,7 +1348,7 @@ class AnalyseWindow(QtGui.QMainWindow):
 
     def get_region_value(self, start=None, end=None):
         if start is None or end is None:
-            return ('', '(255,255,255)', '', '(255,255,255)')
+            return None
         startpoint = self.handle_input(start)
         endpoint = self.handle_input(end)
         _, gv = faceutil.get_avg_gray_value(self.orig_gray_img, startpoint, endpoint, config=self.config, datas=self.datas, img_type='nm')
@@ -1357,7 +1360,7 @@ class AnalyseWindow(QtGui.QMainWindow):
             ir_gv = 0
         gv_color = glahf.gray_to_pseudo(int(gv))
         ir_gv_color = glahf.gray_to_pseudo(int(ir_gv))
-        return (round(gv, 2), gv_color, round(ir_gv, 2), ir_gv_color)
+        return [round(gv, 2), gv_color, round(ir_gv, 2), ir_gv_color]
 
     def get_regions_value(self):
         for index, (key, region) in enumerate(FACE_REGION.items()):
@@ -1538,95 +1541,6 @@ class AnalyseWindow(QtGui.QMainWindow):
         return _toggle_clb
 
     def export_report(self):
-        print (self.get_region_value('1R2', '8L2')) #中1
-        print (self.get_region_value('8R2', '15L2')) #中2
-        print (self.get_region_value('15R2', '18L2')) #中3
-        print (self.get_region_value('18R2', '22L2')) #中4
-        print (self.get_region_value('22R3', '26L3')) #中5
-        print (self.get_region_value('26R4', '29L4')) #中6
-        print (self.get_region_value('29R2', '32L2')) #中7
-        print (self.get_region_value('29R5', '32R2')) #中8
-        print (self.get_region_value('29L2', '32L5')) #中9
-        print (self.get_region_value('32R6', '35L6')) #中10
-        print (self.get_region_value('35R8', '37L8')) #中11
-
-
-        print (self.get_region_value()) #?
-        print (self.get_region_value('15L2', '22L8')) #左11
-        print (self.get_region_value('22L3', '26L8')) #左12
-        print (self.get_region_value('26L4', '29L14')) #左13
-        print (self.get_region_value('29L5', '32L14')) #左14
-        print (self.get_region_value()) #?
-        print (self.get_region_value()) #?
-        print (self.get_region_value('32L6', '35L14')) #左15
-        print (self.get_region_value('35L8', '37L14')) #左16
-        print (self.get_region_value('37L8', '43L14')) #左17
-
-
-        print (self.get_region_value()) #?
-        print (self.get_region_value('15R8', '22R2')) #右11
-        print (self.get_region_value('22R8', '26R3')) #右12
-        print (self.get_region_value('26R14', '29R4')) #右13
-        print (self.get_region_value('29R14', '29R4')) #右14
-        print (self.get_region_value()) #?
-        print (self.get_region_value()) #?
-        print (self.get_region_value('32R14', '35R6')) #右15
-        print (self.get_region_value('35R14', '37R8')) #右16
-        print (self.get_region_value('37R14', '43R8')) #右17
-
-
-        print (self.get_region_value()) #?
-        print (self.get_region_value()) #?
-        print (self.get_region_value()) #?
-        print (self.get_region_value('26L14', '30L20')) #左21
-        print (self.get_region_value('30L14', '34L20')) #左22
-        print (self.get_region_value()) #?
-        print (self.get_region_value('34L14', '38L20')) #左23
-        print (self.get_region_value()) #?
-        print (self.get_region_value('38L14', '42L20')) #左24
-        print (self.get_region_value('42L14', '46L20')) #左25
-        print (self.get_region_value('46L14', '50L20')) #左26
-
-
-        print (self.get_region_value()) #?
-        print (self.get_region_value()) #?
-        print (self.get_region_value()) #?
-        print (self.get_region_value('26R20', '30R14')) #右21
-        print (self.get_region_value('30R20', '34R14')) #右22
-        print (self.get_region_value()) #?
-        print (self.get_region_value()) #?
-        print (self.get_region_value('34R20', '38R14')) #右23
-        print (self.get_region_value('38R20', '42R14')) #右24
-        print (self.get_region_value('42R20', '46R14')) #右25
-        print (self.get_region_value('46R20', '50R14')) #右26
-
-
-        print (self.get_region_value()) #?
-        print (self.get_region_value()) #?
-        print (self.get_region_value()) #?
-        print (self.get_region_value('26L20', '30L38')) #左31
-        print (self.get_region_value('30L20', '34L38')) #左32
-        print (self.get_region_value()) #?
-        print (self.get_region_value()) #?
-        print (self.get_region_value('34L20', '38L38')) #左33
-        print (self.get_region_value('38L20', '42L38')) #左34
-        print (self.get_region_value('42L20', '46L38')) #左35
-        print (self.get_region_value('46L20', '50L38')) #左36
-
-
-        print (self.get_region_value()) #?
-        print (self.get_region_value()) #?
-        print (self.get_region_value()) #?
-        print (self.get_region_value('26R38', '30R20')) #右31
-        print (self.get_region_value('30R38', '34R20')) #右32
-        print (self.get_region_value()) #?
-        print (self.get_region_value()) #?
-        print (self.get_region_value('34R38', '38R20')) #右33
-        print (self.get_region_value('38R38', '42R20')) #右34
-        print (self.get_region_value('42R38', '46R20')) #右35
-        print (self.get_region_value('46R38', '50R20')) #右36
-
-
         screen_height, screen_width = util.screen_size()
         self.save_vis(self.o_orig_img, self.o_ir_img)
         self.qt_face = QtGui.QPixmap('' + LINE_TEMP_PATH)
@@ -1677,14 +1591,279 @@ class AnalyseWindow(QtGui.QMainWindow):
                     ir_cz=r[10]
                 )
             )
+        
+        f = self.get_auto_grayvalue
+        v_l31 = f('1', '2', 'la', 'lb', img=self.left_face)
+        v_l32 = f('1', '2', 'lb', 'lc', img=self.left_face)
+        v_l33 = f('1', '2', 'lc', 'ld', img=self.left_face)
+        v_l34 = f('1', '2', 'ld', 'le', img=self.left_face)
+        v_l35 = f('1', '2', 'le', 'lf', img=self.left_face)
+        v_l36 = f('1', '2', 'lf', 'lg', img=self.left_face)
+        v_ir_l31 = f('ir1', 'ir2', 'ir_la', 'ir_lb', img=self.left_ir_face)
+        v_ir_l32 = f('ir1', 'ir2', 'ir_lb', 'ir_lc', img=self.left_ir_face)
+        v_ir_l33 = f('ir1', 'ir2', 'ir_lc', 'ir_ld', img=self.left_ir_face)
+        v_ir_l34 = f('ir1', 'ir2', 'ir_ld', 'ir_le', img=self.left_ir_face)
+        v_ir_l35 = f('ir1', 'ir2', 'ir_le', 'ir_lf', img=self.left_ir_face)
+        v_ir_l36 = f('ir1', 'ir2', 'ir_lf', 'ir_lg', img=self.left_ir_face)
+        v_r31 = f('3', '4', 'ra', 'rb', img=self.right_face)
+        v_r32 = f('3', '4', 'rb', 'rc', img=self.right_face)
+        v_r33 = f('3', '4', 'rc', 'rd', img=self.right_face)
+        v_r34 = f('3', '4', 'rd', 're', img=self.right_face)
+        v_r35 = f('3', '4', 're', 'rf', img=self.right_face)
+        v_r36 = f('3', '4', 'rf', 'rg', img=self.right_face)
+        v_ir_r31 = f('ir3', 'ir4', 'ir_ra', 'ir_rb', img=self.right_ir_face)
+        v_ir_r32 = f('ir3', 'ir4', 'ir_rb', 'ir_rc', img=self.right_ir_face)
+        v_ir_r33 = f('ir3', 'ir4', 'ir_rc', 'ir_rd', img=self.right_ir_face)
+        v_ir_r34 = f('ir3', 'ir4', 'ir_rd', 'ir_re', img=self.right_ir_face)
+        v_ir_r35 = f('ir3', 'ir4', 'ir_re', 'ir_rf', img=self.right_ir_face)
+        v_ir_r36 = f('ir3', 'ir4', 'ir_rf', 'ir_rg', img=self.right_ir_face)
+        sec_grid_list = []
+        values = [
+         [self.get_region_value('1R2', '8L2') + ['中1', '1R2,8L2'], #
+         self.get_region_value('8R2', '15L2') + ['中2', '8R2,15L2'], #中2
+         self.get_region_value('15R2', '18L2') + ['中3', '15R2,18L2'], #中3
+         self.get_region_value('18R2', '22L2') + ['中4', '18R2,22L2'], #中4
+         self.get_region_value('22R3', '26L3') + ['中5', '22R3,26L3'], #中5
+         self.get_region_value('26R4', '29L4') + ['中6', '26R4,29L4'], #中6
+         self.get_region_value('29R2', '32L2') + ['中7', '29R2,32L2'], #中7
+         self.get_region_value('29R5', '32R2') + ['中8', '29R5,32R2'], #中8
+         self.get_region_value('29L2', '32L5') + ['中9', '29L2,32L5 '], #中9
+         self.get_region_value('32R6', '35L6') + ['中10', '32R6,35L6'], #中10
+         self.get_region_value('35R8', '37L8') + ['中11', '35R8,37L8']
+         ], #中11
+         [self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value('15L2', '22L8') + ['左11', '15L2,22L8'], #左11
+         self.get_region_value('22L3', '26L8') + ['左12', '22L3,26L8'], #左12
+         self.get_region_value('26L4', '29L14') + ['左13', '26L4,29L14'], #左13
+         self.get_region_value('29L5', '32L14') + ['左14', '29L5,32L14'], #左14
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value('32L6', '35L14') + ['左15', '32L6,35L14'], #左15
+         self.get_region_value('35L8', '37L14') + ['左16', '35L8,37L14'], #左16
+         self.get_region_value('37L8', '43L14') + ['左17', '37L8,43L14'],
+         ], #左17
+         [self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value('15R8', '22R2') + ['右11', '15R8,22R2'], #右11
+         self.get_region_value('22R8', '26R3') + ['右12', '22R8,26R3'], #右12
+         self.get_region_value('26R14', '29R4') + ['右13', '26R14,29R4'], #右13
+         self.get_region_value('29R14', '29R4') + ['右14', '29R14,32L5'], #右14
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value('32R14', '35R6') + ['右15', '32R14,35R6'], #右15
+         self.get_region_value('35R14', '37R8') + ['右16', '35R14,37R8'], #右16
+         self.get_region_value('37R14', '43R8') + ['右17', '37R14,43R8']
+         ], #右17
+         [self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value('26L14', '30L20') + ['左21', '26L14,30L20'], #左21
+         self.get_region_value('30L14', '34L20') + ['左22', '30L14,34L20'], #左22
+         self.get_region_value(), #?
+         self.get_region_value('34L14', '38L20') + ['左23', '34L14,38L20'], #左23
+         self.get_region_value(), #?
+         self.get_region_value('38L14', '42L20') + ['左24', '38L14,42L20'], #左24
+         self.get_region_value('42L14', '46L20') + ['左25', '42L14,46L20'], #左25
+         self.get_region_value('46L14', '50L20') + ['左25', '46L14,50L20']
+         ], #左26
+         [self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value('26R20', '30R14') + ['右21', '26R20,30R14'], #右21
+         self.get_region_value('30R20', '34R14') + ['右22', '30R20,34R14'], #右22
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value('34R20', '38R14') + ['右23', '34R20,38R14'], #右23
+         self.get_region_value('38R20', '42R14') + ['右24', '38R20,42R14'], #右24
+         self.get_region_value('42R20', '46R14') + ['右25', '42R20,46R14'], #右25
+         self.get_region_value('46R20', '50R14') + ['右26', '46R20,50R14']
+         ], #右26
+         [self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         (
+            v_l31,
+            glahf.gray_to_pseudo(int(v_l31)),
+            v_ir_l31,
+            glahf.gray_to_pseudo(int(v_ir_l31)),
+            '左31',
+            '26L20,30L38'
+         ), #左31
+         (
+            v_l32,
+            glahf.gray_to_pseudo(int(v_l32)),
+            v_ir_l32,
+            glahf.gray_to_pseudo(int(v_ir_l32)),
+            '左32',
+            '30L20,34L38'
+         ), #左32
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         (
+            v_l33,
+            glahf.gray_to_pseudo(int(v_l33)),
+            v_ir_l33,
+            glahf.gray_to_pseudo(int(v_ir_l33)),
+            '左33',
+            '34L20,38L38'
+         ), #左33
+         (
+            v_l34,
+            glahf.gray_to_pseudo(int(v_l34)),
+            v_ir_l34,
+            glahf.gray_to_pseudo(int(v_ir_l34)),
+            '左34',
+            '38L20,42L38'
+         ), #左34
+         (
+            v_l35,
+            glahf.gray_to_pseudo(int(v_l35)),
+            v_ir_l35,
+            glahf.gray_to_pseudo(int(v_ir_l35)),
+            '左35',
+            '42L20,46L38'
+         ), #左35
+         (
+            v_l36,
+            glahf.gray_to_pseudo(int(v_l36)),
+            v_ir_l36,
+            glahf.gray_to_pseudo(int(v_ir_l36)),
+            '左36',
+            '46L20,50L38'
+         ) #左36
+         ], #左36
+         [self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         (
+            v_r31,
+            glahf.gray_to_pseudo(int(v_r31)),
+            v_ir_r31,
+            glahf.gray_to_pseudo(int(v_ir_r31)),
+            '右31',
+            '26R38,30R20'
+         ), #右31
+         (
+            v_r32,
+            glahf.gray_to_pseudo(int(v_r32)),
+            v_ir_r32,
+            glahf.gray_to_pseudo(int(v_ir_r32)),
+            '右32',
+            '30R38,34R20'
+         ), #右32
+         self.get_region_value(), #?
+         self.get_region_value(), #?
+         (
+            v_r33,
+            glahf.gray_to_pseudo(int(v_r33)),
+            v_ir_r33,
+            glahf.gray_to_pseudo(int(v_ir_r33)),
+            '右33',
+            '34R38,38R20'
+         ), #右33
+         (
+            v_r34,
+            glahf.gray_to_pseudo(int(v_r34)),
+            v_ir_r34,
+            glahf.gray_to_pseudo(int(v_ir_r34)),
+            '右34',
+            '38R38,42R20'
+         ), #右34
+         (
+            v_r35,
+            glahf.gray_to_pseudo(int(v_r35)),
+            v_ir_r35,
+            glahf.gray_to_pseudo(int(v_ir_r35)),
+            '右35',
+            '42R38,46R20'
+         ), #右35
+         (
+            v_r36,
+            glahf.gray_to_pseudo(int(v_r36)),
+            v_ir_r36,
+            glahf.gray_to_pseudo(int(v_ir_r36)),
+            '右36',
+            '46R38,50R20'
+         ) #右36
+         ]
+        ] #右36
+        for row in values:
+            sec_grid_list.append('<tr>')
+            for data in row:
+                if data is None:
+                    sec_grid_list.append('<td></td>')
+                else:    
+                    sec_grid_list.append(
+                        '<td style="background-color: rgb{nm_color}"></td>'.format(nm_color=str(data[1]))
+                    )
+            sec_grid_list.append('</tr>')
+            sec_grid_list.append('<tr>')
+            for data in row:
+                if data is None:
+                    sec_grid_list.append('<td></td>')
+                else:
+                    sec_grid_list.append(
+                        '<td>{pos}</td>'.format(pos=data[4])
+                    )
+            sec_grid_list.append('</tr>')
+            sec_grid_list.append('<tr>')
+            for data in row:
+                if data is None:
+                    sec_grid_list.append('<td></td>')
+                else:
+                    sec_grid_list.append(
+                        '<td style="background-color: rgb{ir_color}"></td>'.format(ir_color=str(data[3]))
+                    )
+            sec_grid_list.append('</tr>')
+            sec_grid_list.append('<tr>')
+            for data in row:
+                if data is None:
+                    sec_grid_list.append('<td></td>')
+                else:
+                    sec_grid_list.append(
+                        '<td>{index}</td>'.format(index=data[5])
+                    )
+            sec_grid_list.append('</tr>')
+
+        for row in values:
+            sec_grid_list.append('<tr>')
+            for data in row:
+                if data is None:
+                    sec_grid_list.append('<td></td>')
+                else:    
+                    sec_grid_list.append(
+                        '<td>{gv}</td>'.format(gv=data[0])
+                    )
+            sec_grid_list.append('</tr>')
+            sec_grid_list.append('<tr>')
+            for data in row:
+                if data is None:
+                    sec_grid_list.append('<td></td>')
+                else:
+                    sec_grid_list.append(
+                        '<td>{ir_gv}</td>'.format(ir_gv=data[2])
+                    )
+            sec_grid_list.append('</tr>')
 
         grid_html = ''.join(grid_list)
         exp_html = ''.join(exps_list)
         ir_exp_html = ''.join(ir_exps_list)
+        sec_grid_html = ''.join(sec_grid_list)
         doc = QtGui.QTextDocument()
         doc.addResource(QtGui.QTextDocument.ImageResource, QtCore.QUrl('mydata://nm.jpg'), QtCore.QVariant(self.qt_face))
         doc.addResource(QtGui.QTextDocument.ImageResource, QtCore.QUrl('mydata://ir.jpg'), QtCore.QVariant(self.qt_ir_face))
-        html = TEMPLATE_HTML.format(hosp_name=HOSP_NAME, grid_html=grid_html, exp_html=exp_html, ir_exp_html=ir_exp_html, img_width=str(screen_width / 6), header_padding=str(screen_width / 12), **self.info)
+        html = TEMPLATE_HTML.format(hosp_name=HOSP_NAME, grid_html=grid_html, sec_grid_html=sec_grid_html, exp_html=exp_html, ir_exp_html=ir_exp_html, img_width=str(screen_width / 6), header_padding=str(screen_width / 12), **self.info)
         css = TEMPLATE_CSS
         doc.setHtml(_fromUtf8(html))
         doc.setDefaultStyleSheet(css)
