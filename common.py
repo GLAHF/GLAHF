@@ -1,5 +1,5 @@
 #-*- coding:utf-8 -*-
-# 2016.09.16 17:25:18 �й���׼ʱ��
+# 2016.09.16 17:25:18 ÖÐ¹ú±ê×¼Ê±¼ä
 #Embedded file name: c:\Users\hp\Desktop\backup\common.py
 try:
     import xml.etree.cElementTree as ET
@@ -43,7 +43,7 @@ CLB_FILE = 'calibration.json'
 INFO_FILE = 'info.json'
 DATAS_FILE = 'datas.json'
 BEGIN_ANALYSE_DEBUG = True
-HOSP_NAME = '\xe6\x9c\xaa\xe6\xb3\xa8\xe5\x86\x8c'
+HOSP_NAME = '未注册'
 try:
     tree = ET.ElementTree(file='./hosp.xml')
     text = tree.getroot().text
@@ -61,4 +61,4 @@ def open_all_debugs():
 def close_all_debugs():
     BEGIN_ANALYSE_DEBUG = False
 # decompiled 1 files: 1 okay, 0 failed, 0 verify failed
-# 2016.09.16 17:25:18 �й���׼ʱ��
+# 2016.09.16 17:25:18 ÖÐ¹ú±ê×¼Ê±¼ä
