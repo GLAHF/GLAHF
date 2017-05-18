@@ -88,6 +88,7 @@ class Ui_Table(QtGui.QTableWidget):
     def on_button(self, info):
         import analyse
         self.analyseWindow = analyse.AnalyseWindow(datas=info)
+        self.analyseWindow.set_info_data(info)
         self.analyseWindow.show()
         self.close()
         self.analyseWindow.set_preview(info)

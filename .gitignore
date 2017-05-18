@@ -1,0 +1,6 @@
+*.pyc
+*.rar
+build/
+dist/
+images/
+temp/

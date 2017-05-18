@@ -1,5 +1,5 @@
 #-*- coding:utf-8 -*-
-# 2016.09.16 17:25:45 �й���׼ʱ��
+# 2016.09.16 17:25:45 ÖÐ¹ú±ê×¼Ê±¼ä
 #Embedded file name: c:\Users\hp\Desktop\backup\container.py
 from cap import Capture
 from common import *
@@ -319,10 +319,20 @@ class MainWindow(QtGui.QWidget):
         self.info = info
         return self.beginAnalyse()
 
-    def set_info(self):
+    def set_info(self):            
         self.parent.hide()
         info_dialog = InfoDialog(self.parent)
         info_dialog.setCallbackAfterSave(self.load_info)
+        if self.info:
+            info_dialog.outpatient.setText(_translate('MainWindow', self.info['outpatient'], None))
+            info_dialog.hospitalized.setText(_translate('MainWindow', self.info['hospitalized'], None))
+            info_dialog.name.setText(_translate('MainWindow', self.info['name'], None))
+            info_dialog.sex.setCurrentIndex(0 if self.info['sex'] == u'男' else 1)
+            info_dialog.height.setCurrentIndex(info_dialog.height.findText(self.info['height']))
+            info_dialog.weight.setCurrentIndex(info_dialog.height.findText(self.info['weight']))
+            info_dialog.chief_complaint.setText(_translate('MainWindow', self.info['chief_complaint'], None))
+            info_dialog.diagnose.setText(_translate('MainWindow', self.info['diagnose'], None))
+            info_dialog.born.setDate(QtCore.QDate.fromString(self.info['born'], 'yyyyMd'))
         info_dialog.show()
 
     def switch_cam(self):
@@ -735,6 +745,7 @@ class MainWindow(QtGui.QWidget):
         d = faceutil.handle_images(FACE_TEMP_PATH, LEFT_TEMP_PATH, RIGHT_TEMP_PATH, f_ir_face=FACE_TEMP_IR_PATH, l_ir_face=LEFT_TEMP_IR_PATH, r_ir_face=RIGHT_TEMP_IR_PATH, info=self.info, config=self.config, path=self.config['savedir'])
         if not d:
             return False
+        self.db_datas['tardir'] = d['tardir']
         f_img = glahf.read(FACE_TEMP_PATH)
         height, width = f_img.shape[:2]
         d['up'] = round(self.keyPoints['up_bound']['y'] / float(height), 3)
@@ -782,4 +793,4 @@ class MainWindow(QtGui.QWidget):
             QtGui.QApplication.quit()
             QtCore.QCoreApplication.quit()
 # decompiled 1 files: 1 okay, 0 failed, 0 verify failed
-# 2016.09.16 17:25:48 �й���׼ʱ��
+# 2016.09.16 17:25:48 ÖÐ¹ú±ê×¼Ê±¼ä

@@ -111,6 +111,20 @@ TEMPLATE_HTML = '''
 {grid_html}
 </tbody>
 </table>
+<br><br>
+<hr>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
 <table>
 {sec_grid_html}
 <table>
@@ -677,8 +691,9 @@ class AnalyseWindow(QtGui.QMainWindow):
         self.reset_btn.setFont(font)
         self.toggle_clb_btn = QtGui.QPushButton(self.centralwidget)
         self.toggle_clb_btn.setObjectName(_fromUtf8('toggle_clb_btn'))
-        self.toggle_clb_btn.setText(_translate('MainWindow', '\xe6\x89\x93\xe5\xbc\x80\xe7\x99\xbd\xe6\x9d\xbf', None))
-        self.toggle_clb_btn.clicked.connect(self.toggle_clb())
+        self.toggle_clb_btn.setText(_translate('MainWindow', '显示皮肤', None))
+        # self.toggle_clb_btn.clicked.connect(self.toggle_clb())
+        self.toggle_clb_btn.clicked.connect(self.display_skin())
         self.toggle_clb_btn.setFont(font)
         self.clb_status = False
         font.setPointSize(18)
@@ -1502,6 +1517,24 @@ class AnalyseWindow(QtGui.QMainWindow):
             return round(gv, 2)
         return (round(gv, 2), round(ir_gv, 2))
 
+    def display_skin(self):
+        d = {'status': False}
+        def _display_skin():
+            face = self.face_now
+            if face is self.left_ir_face:
+                orig = self.left_face
+            elif face is self.frontal_ir_face:
+                orig = self.frontal_face
+            elif face is self.right_ir_face:
+                orig = self.right_face
+            else:
+                orig = face
+            skin, skinMask = faceutil.skin(orig)
+            if face is not orig:
+                skin = faceutil.skin(face, skinMask=skinMask)
+            glahf.show(skin)
+        return _display_skin
+
     def toggle_clb(self):
         d = {'status': False}
 
@@ -1678,9 +1711,9 @@ class AnalyseWindow(QtGui.QMainWindow):
          self.get_region_value(), #?
          self.get_region_value('26R20', '30R14') + ['右21', '26R20,30R14'], #右21
          self.get_region_value('30R20', '34R14') + ['右22', '30R20,34R14'], #右22
-         self.get_region_value(), #?
-         self.get_region_value(), #?
          self.get_region_value('34R20', '38R14') + ['右23', '34R20,38R14'], #右23
+         self.get_region_value(), #?
+         self.get_region_value(), #?
          self.get_region_value('38R20', '42R14') + ['右24', '38R20,42R14'], #右24
          self.get_region_value('42R20', '46R14') + ['右25', '42R20,46R14'], #右25
          self.get_region_value('46R20', '50R14') + ['右26', '46R20,50R14']
@@ -1706,8 +1739,6 @@ class AnalyseWindow(QtGui.QMainWindow):
             '左32',
             '30L20,34L38'
          ), #左32
-         self.get_region_value(), #?
-         self.get_region_value(), #?
          (
             v_l33,
             glahf.gray_to_pseudo(int(v_l33)),
@@ -1716,6 +1747,8 @@ class AnalyseWindow(QtGui.QMainWindow):
             '左33',
             '34L20,38L38'
          ), #左33
+         self.get_region_value(), #?
+         self.get_region_value(), #?
          (
             v_l34,
             glahf.gray_to_pseudo(int(v_l34)),
@@ -1762,9 +1795,7 @@ class AnalyseWindow(QtGui.QMainWindow):
             '右32',
             '30R38,34R20'
          ), #右32
-         self.get_region_value(), #?
-         self.get_region_value(), #?
-         (
+        (
             v_r33,
             glahf.gray_to_pseudo(int(v_r33)),
             v_ir_r33,
@@ -1772,6 +1803,8 @@ class AnalyseWindow(QtGui.QMainWindow):
             '右33',
             '34R38,38R20'
          ), #右33
+         self.get_region_value(), #?
+         self.get_region_value(), #?
          (
             v_r34,
             glahf.gray_to_pseudo(int(v_r34)),
@@ -1814,7 +1847,7 @@ class AnalyseWindow(QtGui.QMainWindow):
                     sec_grid_list.append('<td></td>')
                 else:
                     sec_grid_list.append(
-                        '<td>{pos}</td>'.format(pos=data[4])
+                        '<td>{gv}</td>'.format(gv=data[0])
                     )
             sec_grid_list.append('</tr>')
             sec_grid_list.append('<tr>')
@@ -1832,29 +1865,29 @@ class AnalyseWindow(QtGui.QMainWindow):
                     sec_grid_list.append('<td></td>')
                 else:
                     sec_grid_list.append(
-                        '<td>{index}</td>'.format(index=data[5])
-                    )
-            sec_grid_list.append('</tr>')
-
-        for row in values:
-            sec_grid_list.append('<tr>')
-            for data in row:
-                if data is None:
-                    sec_grid_list.append('<td></td>')
-                else:    
-                    sec_grid_list.append(
-                        '<td>{gv}</td>'.format(gv=data[0])
-                    )
-            sec_grid_list.append('</tr>')
-            sec_grid_list.append('<tr>')
-            for data in row:
-                if data is None:
-                    sec_grid_list.append('<td></td>')
-                else:
-                    sec_grid_list.append(
                         '<td>{ir_gv}</td>'.format(ir_gv=data[2])
                     )
             sec_grid_list.append('</tr>')
+        sec_grid_list.append('<tr></tr>')
+        # for row in values:
+        #     sec_grid_list.append('<tr>')
+        #     for data in row:
+        #         if data is None:
+        #             sec_grid_list.append('<td></td>')
+        #         else:    
+        #             sec_grid_list.append(
+        #                 '<td>{gv}</td>'.format(gv=data[0])
+        #             )
+        #     sec_grid_list.append('</tr>')
+        #     sec_grid_list.append('<tr>')
+        #     for data in row:
+        #         if data is None:
+        #             sec_grid_list.append('<td></td>')
+        #         else:
+        #             sec_grid_list.append(
+        #                 '<td>{ir_gv}</td>'.format(ir_gv=data[2])
+        #             )
+        #     sec_grid_list.append('</tr>')
 
         grid_html = ''.join(grid_list)
         exp_html = ''.join(exps_list)
@@ -1874,7 +1907,7 @@ class AnalyseWindow(QtGui.QMainWindow):
         try:
             os.startfile(os.path.join(self.datas['tardir'], 'export.pdf'))
         except:
-            util.warn_dialog(text='\xe5\xbd\x93\xe5\x89\x8d\xe7\x94\xb5\xe8\x84\x91\xe6\xb2\xa1\xe5\xae\x89\xe8\xa3\x85pdf\xef\xbc\x8c\xe8\xaf\xb7\xe5\xae\x89\xe8\xa3\x85\xe5\x90\x8e\xe9\x87\x8d\xe8\xaf\x95')
+            util.warn_dialog(text=u'当前电脑没安装pdf，请安装后重试')
 
     @pyqtSlot()
     def showMax(self):
